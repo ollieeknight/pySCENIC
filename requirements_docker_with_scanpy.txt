@@ -1,9 +1,9 @@
 # scanpy
-scanpy[leiden]==1.9.1
-louvain==0.7.1
+scanpy[leiden]>=1.10.0
+louvain>=0.8.2
 # Fast TSNE implementation.
-MulticoreTSNE==0.1
+MulticoreTSNE>=0.1
 # Parameterizing, executing, and analyzing Jupyter Notebooks.
-papermill==2.3.4
+papermill>=2.6.0
 # IPython kernel.
-ipykernel==6.15.1
+ipykernel>=6.29.0

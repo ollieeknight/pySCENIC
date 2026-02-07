@@ -262,7 +262,7 @@ def load_adjacencies(fname: str) -> pd.DataFrame:
     return pd.read_csv(
         fname,
         sep=suffixes_to_separator(extension),
-        dtype={0: str, 1: str, 2: np.float64},
+        dtype={0: str, 1: str, 2: "float64"},
         keep_default_na=False,
     )
 

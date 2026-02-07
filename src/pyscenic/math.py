@@ -43,7 +43,7 @@ def masked_rho_2d(x: np.ndarray, y: np.ndarray, mask: float = 0.0) -> np.ndarray
     # Numba can parallelize loops automatically but this is still an experimental feature.
     n = x.shape[0]
     p = y.shape[0]
-    rhos = np.empty(shape=(n, p), dtype=np.float64)
+    rhos = np.empty(shape=(n, p), dtype="float64")
     for n_idx in prange(n):
         for p_idx in range(p):
             rhos[n_idx, p_idx] = masked_rho(x[n_idx, :], y[p_idx, :], mask)
@@ -63,7 +63,7 @@ def masked_rho4pairs(
     """
     # Numba can parallelize loops automatically but this is still an experimental feature.
     n = col_idx_pairs.shape[0]
-    rhos = np.empty(shape=n, dtype=np.float64)
+    rhos = np.empty(shape=n, dtype="float64")
     for n_idx in prange(n):
         x = mtx[:, col_idx_pairs[n_idx, 0]]
         y = mtx[:, col_idx_pairs[n_idx, 1]]

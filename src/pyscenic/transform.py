@@ -35,14 +35,14 @@ COLUMN_NAME_TYPE = "Type"
 # TODO: Should actually be a function depending on return_recovery_curves and rank_threshold
 DF_META_DATA = make_meta(
     {
-        ("Enrichment", COLUMN_NAME_AUC): np.float64,
-        ("Enrichment", COLUMN_NAME_NES): np.float64,
-        ("Enrichment", COLUMN_NAME_MOTIF_SIMILARITY_QVALUE): np.float64,
-        ("Enrichment", COLUMN_NAME_ORTHOLOGOUS_IDENTITY): np.float64,
+        ("Enrichment", COLUMN_NAME_AUC): "float64",
+        ("Enrichment", COLUMN_NAME_NES): "float64",
+        ("Enrichment", COLUMN_NAME_MOTIF_SIMILARITY_QVALUE): "float64",
+        ("Enrichment", COLUMN_NAME_ORTHOLOGOUS_IDENTITY): "float64",
         ("Enrichment", COLUMN_NAME_ANNOTATION): object,
         ("Enrichment", COLUMN_NAME_CONTEXT): object,
         ("Enrichment", COLUMN_NAME_TARGET_GENES): object,
-        ("Enrichment", COLUMN_NAME_RANK_AT_MAX): np.int64,
+        ("Enrichment", COLUMN_NAME_RANK_AT_MAX): "int64",
     },
     index=pd.MultiIndex.from_arrays(
         [[], []], names=(COLUMN_NAME_TF, COLUMN_NAME_MOTIF_ID)
@@ -428,29 +428,29 @@ def _regulon4group(tf_name, context, df_group, save_columns=[]) -> Optional[Regu
     df_selected = df_group.sort_values(by=COLUMN_NAME_NES, ascending=False)
     first_result_by_nes = df_selected.head(1).reset_index()
     motif_logo = (
-        "{}.png".format(first_result_by_nes[COLUMN_NAME_MOTIF_ID].values[0])
+        "{}.png".format(first_result_by_nes[COLUMN_NAME_MOTIF_ID].iloc[0])
         if len(df_selected) > 0
         else ""
     )
 
     # Add additional columns to the regulon
     nes = (
-        first_result_by_nes[COLUMN_NAME_NES].values[0]
+        first_result_by_nes[COLUMN_NAME_NES].iloc[0]
         if COLUMN_NAME_NES in save_columns
         else 0.0
     )
     orthologous_identity = (
-        first_result_by_nes[COLUMN_NAME_ORTHOLOGOUS_IDENTITY].values[0]
+        first_result_by_nes[COLUMN_NAME_ORTHOLOGOUS_IDENTITY].iloc[0]
         if COLUMN_NAME_ORTHOLOGOUS_IDENTITY in save_columns
         else 0.0
     )
     similarity_qvalue = (
-        first_result_by_nes[COLUMN_NAME_MOTIF_SIMILARITY_QVALUE].values[0]
+        first_result_by_nes[COLUMN_NAME_MOTIF_SIMILARITY_QVALUE].iloc[0]
         if COLUMN_NAME_MOTIF_SIMILARITY_QVALUE in save_columns
         else 0.0
     )
     annotation = (
-        first_result_by_nes[COLUMN_NAME_ANNOTATION].values[0]
+        first_result_by_nes[COLUMN_NAME_ANNOTATION].iloc[0]
         if COLUMN_NAME_ANNOTATION in save_columns
         else ""
     )
@@ -470,22 +470,22 @@ def _regulon4group(tf_name, context, df_group, save_columns=[]) -> Optional[Regu
     )
 
     nes = (
-        first_result_by_nes[COLUMN_NAME_NES].values[0]
+        first_result_by_nes[COLUMN_NAME_NES].iloc[0]
         if COLUMN_NAME_NES in save_columns
         else 0.0
     )
     orthologous_identity = (
-        first_result_by_nes[COLUMN_NAME_ORTHOLOGOUS_IDENTITY].values[0]
+        first_result_by_nes[COLUMN_NAME_ORTHOLOGOUS_IDENTITY].iloc[0]
         if COLUMN_NAME_ORTHOLOGOUS_IDENTITY in save_columns
         else 0.0
     )
     similarity_qvalue = (
-        first_result_by_nes[COLUMN_NAME_MOTIF_SIMILARITY_QVALUE].values[0]
+        first_result_by_nes[COLUMN_NAME_MOTIF_SIMILARITY_QVALUE].iloc[0]
         if COLUMN_NAME_MOTIF_SIMILARITY_QVALUE in save_columns
         else 0.0
     )
     annotation = (
-        first_result_by_nes[COLUMN_NAME_ANNOTATION].values[0]
+        first_result_by_nes[COLUMN_NAME_ANNOTATION].iloc[0]
         if COLUMN_NAME_ANNOTATION in save_columns
         else ""
     )

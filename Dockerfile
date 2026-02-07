@@ -1,4 +1,4 @@
-FROM python:3.10.6-slim-bullseye AS compile-image
+FROM python:3.12-slim-bookworm AS compile-image
 
 ENV DEBIAN_FRONTEND=noninteractive
 
@@ -26,7 +26,7 @@ RUN  cd /tmp/pySCENIC && \
      pip install . && \
      cd .. && rm -rf pySCENIC
 
-FROM python:3.10.6-slim-bullseye AS build-image
+FROM python:3.12-slim-bookworm AS build-image
 
 RUN apt-get -y update && \
     apt-get -y upgrade && \
